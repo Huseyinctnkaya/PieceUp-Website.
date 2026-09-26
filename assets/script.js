@@ -146,7 +146,7 @@
 
   function initMagnetic() {
     document.querySelectorAll(".btn-magnetic").forEach((btn) => {
-      const strength = 0.35;
+      const strength = 0.45;
 
       btn.addEventListener("mousemove", (e) => {
         const rect = btn.getBoundingClientRect();
@@ -171,7 +171,7 @@
     const shell = document.querySelector(".puzzle-shell");
     if (!shell) return;
     const stage = shell.querySelector(".puzzle-stage");
-    const maxTilt = 3;
+    const maxTilt = 6;
 
     shell.style.transition = "transform 0.15s ease-out";
 

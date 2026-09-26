@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/style.css?v=3" />
+  <link rel="stylesheet" href="assets/style.css?v=4" />
 </head>
 <body>
 
@@ -66,22 +66,27 @@
     <!-- ============ HERO ============ -->
     <section class="hero">
       <div class="mesh-bg"><span></span></div>
+      <div class="hero-wordmark" aria-hidden="true">PieceUp</div>
 
-      <svg class="floating-piece" style="top:16%; left:7%; width:52px; height:52px; --rot:-10deg;" viewBox="0 0 48 48" fill="none" data-parallax="0.06" aria-hidden="true">
+      <svg class="floating-piece" style="top:14%; left:6%; width:74px; height:74px; --rot:-10deg; opacity:.3; color:var(--accent);" viewBox="0 0 48 48" fill="none" data-parallax="0.06" aria-hidden="true">
         <mask id="fp-1"><rect width="48" height="48" fill="#fff"/><circle cx="8" cy="24" r="6" fill="#000"/></mask>
         <g mask="url(#fp-1)"><rect x="8" y="8" width="26" height="32" rx="6" fill="currentColor"/><circle cx="40" cy="20" r="6" fill="currentColor"/></g>
       </svg>
-      <svg class="floating-piece" style="top:62%; left:11%; width:36px; height:36px; --rot:16deg; opacity:.12;" viewBox="0 0 48 48" fill="none" data-parallax="0.1" aria-hidden="true">
+      <svg class="floating-piece" style="top:60%; left:13%; width:44px; height:44px; --rot:16deg; opacity:.22; color:#ff7a45;" viewBox="0 0 48 48" fill="none" data-parallax="0.1" aria-hidden="true">
         <mask id="fp-2"><rect width="48" height="48" fill="#fff"/><circle cx="8" cy="24" r="6" fill="#000"/></mask>
         <g mask="url(#fp-2)"><rect x="8" y="8" width="26" height="32" rx="6" fill="currentColor"/><circle cx="40" cy="20" r="6" fill="currentColor"/></g>
       </svg>
-      <svg class="floating-piece" style="top:20%; right:8%; width:44px; height:44px; --rot:8deg;" viewBox="0 0 48 48" fill="none" data-parallax="0.08" aria-hidden="true">
+      <svg class="floating-piece" style="top:18%; right:7%; width:64px; height:64px; --rot:12deg; opacity:.26; color:var(--accent-dark);" viewBox="0 0 48 48" fill="none" data-parallax="0.08" aria-hidden="true">
         <mask id="fp-3"><rect width="48" height="48" fill="#fff"/><circle cx="8" cy="24" r="6" fill="#000"/></mask>
         <g mask="url(#fp-3)"><rect x="8" y="8" width="26" height="32" rx="6" fill="currentColor"/><circle cx="40" cy="20" r="6" fill="currentColor"/></g>
       </svg>
-      <svg class="floating-piece" style="top:66%; right:13%; width:60px; height:60px; --rot:-14deg; opacity:.1;" viewBox="0 0 48 48" fill="none" data-parallax="0.05" aria-hidden="true">
+      <svg class="floating-piece" style="top:64%; right:12%; width:86px; height:86px; --rot:-14deg; opacity:.18; color:#ffc25c;" viewBox="0 0 48 48" fill="none" data-parallax="0.05" aria-hidden="true">
         <mask id="fp-4"><rect width="48" height="48" fill="#fff"/><circle cx="8" cy="24" r="6" fill="#000"/></mask>
         <g mask="url(#fp-4)"><rect x="8" y="8" width="26" height="32" rx="6" fill="currentColor"/><circle cx="40" cy="20" r="6" fill="currentColor"/></g>
+      </svg>
+      <svg class="floating-piece" style="top:40%; left:2%; width:30px; height:30px; --rot:22deg; opacity:.2; color:var(--accent);" viewBox="0 0 48 48" fill="none" data-parallax="0.12" aria-hidden="true">
+        <mask id="fp-5"><rect width="48" height="48" fill="#fff"/><circle cx="8" cy="24" r="6" fill="#000"/></mask>
+        <g mask="url(#fp-5)"><rect x="8" y="8" width="26" height="32" rx="6" fill="currentColor"/><circle cx="40" cy="20" r="6" fill="currentColor"/></g>
       </svg>
 
       <div class="container hero-inner">
@@ -104,16 +109,6 @@
         </div>
       </div>
     </section>
-
-    <!-- ============ KINETIC STRIP ============ -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span>Drag</span><span>Solve</span><span>Win</span><span>Repeat</span>
-        <span>Drag</span><span>Solve</span><span>Win</span><span>Repeat</span>
-        <span>Drag</span><span>Solve</span><span>Win</span><span>Repeat</span>
-        <span>Drag</span><span>Solve</span><span>Win</span><span>Repeat</span>
-      </div>
-    </div>
 
     <!-- ============ LIVE DEMO ============ -->
     <section class="section puzzle-demo-section" id="demo">
@@ -368,6 +363,6 @@
     </div>
   </footer>
 
-  <script src="assets/script.js?v=3"></script>
+  <script src="assets/script.js?v=4"></script>
 </body>
 </html>
