@@ -8,12 +8,25 @@
 (function () {
   "use strict";
 
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  const hasFinePointer = window.matchMedia("(pointer: fine)").matches;
+
   document.addEventListener("DOMContentLoaded", () => {
     initFooterYear();
     initNav();
     initReveal();
     initPuzzleDemo();
     initContactForm();
+    initScrollProgress();
+    if (!prefersReducedMotion) {
+      initParallax();
+      if (hasFinePointer) {
+        initMagnetic();
+        initTilt();
+      }
+    }
   });
 
   function initFooterYear() {
@@ -41,7 +54,7 @@
   }
 
   function initReveal() {
-    const items = document.querySelectorAll(".reveal");
+    const items = document.querySelectorAll(".reveal, .reveal-stagger");
     if (!items.length) return;
 
     if (!("IntersectionObserver" in window)) {
@@ -62,6 +75,117 @@
     );
 
     items.forEach((el) => observer.observe(el));
+  }
+
+  /* ------------------------------------------------------------------ *
+   * Scroll progress bar
+   * ------------------------------------------------------------------ */
+
+  function initScrollProgress() {
+    const bar = document.querySelector(".scroll-progress");
+    if (!bar) return;
+
+    let ticking = false;
+    const update = () => {
+      const scrollable =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const pct = scrollable > 0 ? window.scrollY / scrollable : 0;
+      bar.style.transform = `scaleX(${Math.min(1, Math.max(0, pct))})`;
+      ticking = false;
+    };
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          window.requestAnimationFrame(update);
+          ticking = true;
+        }
+      },
+      { passive: true },
+    );
+    update();
+  }
+
+  /* ------------------------------------------------------------------ *
+   * Scroll parallax for the decorative floating puzzle pieces
+   * ------------------------------------------------------------------ */
+
+  function initParallax() {
+    const items = document.querySelectorAll("[data-parallax]");
+    if (!items.length) return;
+
+    let ticking = false;
+    const update = () => {
+      const y = window.scrollY;
+      items.forEach((el) => {
+        const speed = Number(el.dataset.parallax) || 0.1;
+        el.style.transform = `translateY(${y * speed}px) rotate(var(--rot, 0deg))`;
+      });
+      ticking = false;
+    };
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          window.requestAnimationFrame(update);
+          ticking = true;
+        }
+      },
+      { passive: true },
+    );
+    update();
+  }
+
+  /* ------------------------------------------------------------------ *
+   * Magnetic buttons — the primary CTAs drift a few pixels toward the
+   * cursor, then spring back. Skipped on touch devices and for anyone
+   * who has asked for reduced motion.
+   * ------------------------------------------------------------------ */
+
+  function initMagnetic() {
+    document.querySelectorAll(".btn-magnetic").forEach((btn) => {
+      const strength = 0.35;
+
+      btn.addEventListener("mousemove", (e) => {
+        const rect = btn.getBoundingClientRect();
+        const dx = e.clientX - (rect.left + rect.width / 2);
+        const dy = e.clientY - (rect.top + rect.height / 2);
+        btn.style.transform = `translate(${dx * strength}px, ${dy * strength}px)`;
+      });
+
+      btn.addEventListener("mouseleave", () => {
+        btn.style.transform = "";
+      });
+    });
+  }
+
+  /* ------------------------------------------------------------------ *
+   * Card tilt for the puzzle demo shell — a subtle 3D lean toward the
+   * cursor. Frozen while the pointer is over the board/tray so it never
+   * fights with actually dragging a piece.
+   * ------------------------------------------------------------------ */
+
+  function initTilt() {
+    const shell = document.querySelector(".puzzle-shell");
+    if (!shell) return;
+    const stage = shell.querySelector(".puzzle-stage");
+    const maxTilt = 3;
+
+    shell.style.transition = "transform 0.15s ease-out";
+
+    shell.addEventListener("mousemove", (e) => {
+      if (stage && e.target.closest(".puzzle-stage")) return;
+      const rect = shell.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width - 0.5;
+      const py = (e.clientY - rect.top) / rect.height - 0.5;
+      shell.style.transform = `perspective(1000px) rotateX(${-py * maxTilt}deg) rotateY(${px * maxTilt}deg)`;
+    });
+
+    shell.addEventListener("mouseleave", () => {
+      shell.style.transform = "";
+    });
   }
 
   /* ------------------------------------------------------------------ *

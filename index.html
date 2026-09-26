@@ -9,9 +9,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/style.css?v=2" />
+  <link rel="stylesheet" href="assets/style.css?v=3" />
 </head>
 <body>
+
+  <div class="scroll-progress"></div>
 
   <header class="site-header">
     <div class="container">
@@ -64,6 +66,24 @@
     <!-- ============ HERO ============ -->
     <section class="hero">
       <div class="mesh-bg"><span></span></div>
+
+      <svg class="floating-piece" style="top:16%; left:7%; width:52px; height:52px; --rot:-10deg;" viewBox="0 0 48 48" fill="none" data-parallax="0.06" aria-hidden="true">
+        <mask id="fp-1"><rect width="48" height="48" fill="#fff"/><circle cx="8" cy="24" r="6" fill="#000"/></mask>
+        <g mask="url(#fp-1)"><rect x="8" y="8" width="26" height="32" rx="6" fill="currentColor"/><circle cx="40" cy="20" r="6" fill="currentColor"/></g>
+      </svg>
+      <svg class="floating-piece" style="top:62%; left:11%; width:36px; height:36px; --rot:16deg; opacity:.12;" viewBox="0 0 48 48" fill="none" data-parallax="0.1" aria-hidden="true">
+        <mask id="fp-2"><rect width="48" height="48" fill="#fff"/><circle cx="8" cy="24" r="6" fill="#000"/></mask>
+        <g mask="url(#fp-2)"><rect x="8" y="8" width="26" height="32" rx="6" fill="currentColor"/><circle cx="40" cy="20" r="6" fill="currentColor"/></g>
+      </svg>
+      <svg class="floating-piece" style="top:20%; right:8%; width:44px; height:44px; --rot:8deg;" viewBox="0 0 48 48" fill="none" data-parallax="0.08" aria-hidden="true">
+        <mask id="fp-3"><rect width="48" height="48" fill="#fff"/><circle cx="8" cy="24" r="6" fill="#000"/></mask>
+        <g mask="url(#fp-3)"><rect x="8" y="8" width="26" height="32" rx="6" fill="currentColor"/><circle cx="40" cy="20" r="6" fill="currentColor"/></g>
+      </svg>
+      <svg class="floating-piece" style="top:66%; right:13%; width:60px; height:60px; --rot:-14deg; opacity:.1;" viewBox="0 0 48 48" fill="none" data-parallax="0.05" aria-hidden="true">
+        <mask id="fp-4"><rect width="48" height="48" fill="#fff"/><circle cx="8" cy="24" r="6" fill="#000"/></mask>
+        <g mask="url(#fp-4)"><rect x="8" y="8" width="26" height="32" rx="6" fill="currentColor"/><circle cx="40" cy="20" r="6" fill="currentColor"/></g>
+      </svg>
+
       <div class="container hero-inner">
         <span class="pill">🧩 Promotions &amp; games app for Shopify</span>
         <h1>Turn browsing into playing.</h1>
@@ -74,7 +94,7 @@
           spreadsheet of codes to hand out.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-accent" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Add to Shopify — it's free</a>
+          <a class="btn btn-accent btn-magnetic" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Add to Shopify — it's free</a>
           <a class="btn btn-ghost" href="#demo">Try the demo ↓</a>
         </div>
         <div class="hero-meta">
@@ -84,6 +104,16 @@
         </div>
       </div>
     </section>
+
+    <!-- ============ KINETIC STRIP ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Drag</span><span>Solve</span><span>Win</span><span>Repeat</span>
+        <span>Drag</span><span>Solve</span><span>Win</span><span>Repeat</span>
+        <span>Drag</span><span>Solve</span><span>Win</span><span>Repeat</span>
+        <span>Drag</span><span>Solve</span><span>Win</span><span>Repeat</span>
+      </div>
+    </div>
 
     <!-- ============ LIVE DEMO ============ -->
     <section class="section puzzle-demo-section" id="demo">
@@ -150,18 +180,21 @@
           <span class="eyebrow">How it works</span>
           <h2>Three steps, no developer needed</h2>
         </div>
-        <div class="steps reveal">
+        <div class="steps reveal-stagger">
           <div class="step">
+            <span class="step-bignum">01</span>
             <div class="step-num">1</div>
             <h3>Build a puzzle</h3>
             <p>Upload any image, pick 2×2 up to 4×4 pieces, a difficulty, and — optionally — a time limit.</p>
           </div>
           <div class="step">
+            <span class="step-bignum">02</span>
             <div class="step-num">2</div>
             <h3>Set the prize</h3>
             <p>Percentage off, amount off, or a free "try again." Limit it to certain products or collections if you like.</p>
           </div>
           <div class="step">
+            <span class="step-bignum">03</span>
             <div class="step-num">3</div>
             <h3>Turn it on</h3>
             <p>Enable the theme app embed, choose how it triggers, and PieceUp mints a real discount code on every win.</p>
@@ -178,7 +211,7 @@
           <h2>Everything you need to run it, nothing you have to babysit</h2>
         </div>
 
-        <div class="feature-grid reveal">
+        <div class="feature-grid reveal-stagger">
           <a class="feature-card" href="features.html#build">
             <div class="feature-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 5h16v10H4z" stroke="currentColor" stroke-width="1.8"/><path d="M4 15l4-5 3 3 4-5 5 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -238,7 +271,7 @@
           <h2>Start free. Upgrade when the puzzle earns its keep.</h2>
         </div>
 
-        <div class="pricing-grid reveal">
+        <div class="pricing-grid reveal-stagger">
           <div class="pricing-card">
             <span class="plan-name">Free</span>
             <div class="plan-price"><strong>$0</strong><span>/month</span></div>
@@ -285,7 +318,7 @@
           <h2>Give your discount code a reason to be earned.</h2>
           <p>Install PieceUp free, build your first puzzle in minutes, and see what a game does to your conversion rate.</p>
           <div class="cta-actions">
-            <a class="btn btn-accent" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Add to Shopify — it's free</a>
+            <a class="btn btn-accent btn-magnetic" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Add to Shopify — it's free</a>
             <a class="btn btn-ghost" style="color:#fff; border-color:rgba(255,255,255,.35);" href="contact.html">Talk to us first</a>
           </div>
         </div>
@@ -335,6 +368,6 @@
     </div>
   </footer>
 
-  <script src="assets/script.js?v=2"></script>
+  <script src="assets/script.js?v=3"></script>
 </body>
 </html>
