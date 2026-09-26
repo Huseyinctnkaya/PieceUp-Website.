@@ -114,6 +114,75 @@
     let timerId = null;
     let seconds = 0;
     let started = false;
+    let pieceUid = 0;
+
+    // A fixed connector layout so tabs and blanks interlock correctly between
+    // neighbours. H[row][col] is the seam between piece (row,col) and
+    // (row,col+1): +1 = left piece has the tab. V[row][col] is the seam
+    // between (row,col) and (row+1,col): +1 = the upper piece has the tab.
+    const H = [
+      [1, -1],
+      [-1, 1],
+      [1, -1],
+    ];
+    const V = [
+      [1, -1, 1],
+      [-1, 1, -1],
+    ];
+    const TAB_R = 13; // knob radius, in the piece's own 0-100 viewBox units
+
+    function edgeType(row, col, side) {
+      if (side === "top") {
+        return row === 0 ? "flat" : V[row - 1][col] === 1 ? "blank" : "tab";
+      }
+      if (side === "bottom") {
+        return row === GRID - 1 ? "flat" : V[row][col] === 1 ? "tab" : "blank";
+      }
+      if (side === "right") {
+        return col === GRID - 1 ? "flat" : H[row][col] === 1 ? "tab" : "blank";
+      }
+      // left
+      return col === 0 ? "flat" : H[row][col - 1] === 1 ? "blank" : "tab";
+    }
+
+    /**
+     * The jigsaw outline for piece (row,col) as an SVG path, in a 0-100
+     * viewBox. Traversed clockwise, which is what makes a single rule work
+     * for every edge: a tab (bump away from the piece) always sweeps 0, a
+     * blank (notch into the piece) always sweeps 1 — regardless of which
+     * side it's on — because clockwise travel always keeps the piece's own
+     * interior on the traveller's right.
+     */
+    function piecePath(row, col) {
+      const corners = [
+        [0, 0],
+        [100, 0],
+        [100, 100],
+        [0, 100],
+      ];
+      const sides = ["top", "right", "bottom", "left"];
+      let d = `M ${corners[0][0]},${corners[0][1]} `;
+
+      for (let i = 0; i < 4; i++) {
+        const [x1, y1] = corners[i];
+        const [x2, y2] = corners[(i + 1) % 4];
+        const type = edgeType(row, col, sides[i]);
+
+        if (type === "flat") {
+          d += `L ${x2},${y2} `;
+          continue;
+        }
+
+        const p1x = x1 + (x2 - x1) * 0.37;
+        const p1y = y1 + (y2 - y1) * 0.37;
+        const p2x = x1 + (x2 - x1) * 0.63;
+        const p2y = y1 + (y2 - y1) * 0.63;
+        const sweep = type === "tab" ? 0 : 1;
+        d += `L ${p1x},${p1y} A ${TAB_R} ${TAB_R} 0 0 ${sweep} ${p2x},${p2y} L ${x2},${y2} `;
+      }
+
+      return `${d}Z`;
+    }
 
     buildBoard();
     buildTray(shuffledIndices());
@@ -128,6 +197,10 @@
     function buildBoard() {
       board.innerHTML = "";
       for (let i = 0; i < GRID * GRID; i++) {
+        const row = Math.floor(i / GRID);
+        const col = i % GRID;
+        const d = piecePath(row, col);
+
         const slot = document.createElement("div");
         slot.className = "puzzle-slot";
         slot.dataset.index = String(i);
@@ -139,6 +212,7 @@
         );
         slot.style.setProperty("--bg-x", `${(i % GRID) * 50}%`);
         slot.style.setProperty("--bg-y", `${Math.floor(i / GRID) * 50}%`);
+        slot.innerHTML = `<svg class="puzzle-slot-outline" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="${d}"/></svg>`;
         slot.addEventListener("click", () => attemptPlace(slot));
         slot.addEventListener("keydown", (e) => {
           if (e.key === "Enter" || e.key === " ") {
@@ -171,21 +245,31 @@
     }
 
     function makePiece(correctIndex) {
+      const row = Math.floor(correctIndex / GRID);
+      const col = correctIndex % GRID;
+      const d = piecePath(row, col);
+      const clipId = `piece-clip-${pieceUid++}`;
+
       const piece = document.createElement("div");
       piece.className = "puzzle-piece";
       piece.dataset.correct = String(correctIndex);
       piece.setAttribute("role", "button");
       piece.setAttribute("tabindex", "0");
       piece.setAttribute("aria-label", `Puzzle piece ${correctIndex + 1}`);
-      // A relative url() inside a CSS custom property resolves against the
-      // *document* base when the property is consumed from an inline style
-      // (as here), not against style.css's own location — so this piece face
-      // is pointed at the image directly rather than through --puzzle-image.
-      piece.style.backgroundImage = 'url("assets/puzzle-demo.svg")';
-      piece.style.backgroundSize = "300% 300%";
-      piece.style.backgroundPosition = `${(correctIndex % GRID) * 50}% ${
-        Math.floor(correctIndex / GRID) * 50
-      }%`;
+
+      // The face is an actual jigsaw silhouette, not a plain square: the
+      // shared image is clipped to the piece's own tab/blank outline, then
+      // shifted by its row/col so the right slice of the picture shows
+      // through — the same slicing math as a CSS background-position, just
+      // done in the SVG's own coordinate space so it clips correctly too.
+      piece.innerHTML = `
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+          <defs><clipPath id="${clipId}"><path d="${d}"/></clipPath></defs>
+          <image href="assets/puzzle-demo.svg" xlink:href="assets/puzzle-demo.svg"
+                 x="${-col * 100}" y="${-row * 100}" width="300" height="300"
+                 preserveAspectRatio="none" clip-path="url(#${clipId})"></image>
+          <path d="${d}" class="piece-outline"></path>
+        </svg>`;
 
       piece.addEventListener("pointerdown", (e) => onPointerDown(e, piece));
       piece.addEventListener("keydown", (e) => {
@@ -207,7 +291,8 @@
       const startX = e.clientX;
       const startY = e.clientY;
       let dragging = false;
-      let ghost = null;
+      let w = 0;
+      let h = 0;
 
       const onMove = (ev) => {
         const dx = ev.clientX - startX;
@@ -216,24 +301,28 @@
         if (!dragging && Math.hypot(dx, dy) > 6) {
           dragging = true;
           clearSelection();
-          piece.classList.add("dragging");
-          ghost = piece.cloneNode(true);
-          ghost.classList.add("puzzle-piece-ghost");
-          Object.assign(ghost.style, {
+          // Pick the piece itself up (rather than dragging a copy) so the
+          // exact jigsaw shape follows the pointer, at its true render size.
+          const rect = piece.getBoundingClientRect();
+          w = rect.width;
+          h = rect.height;
+          Object.assign(piece.style, {
             position: "fixed",
-            width: `${piece.offsetWidth}px`,
-            height: `${piece.offsetHeight}px`,
-            pointerEvents: "none",
+            width: `${w}px`,
+            height: `${h}px`,
+            left: `${ev.clientX - w / 2}px`,
+            top: `${ev.clientY - h / 2}px`,
             zIndex: "80",
-            transform: "translate(-50%, -50%) scale(1.06)",
-            boxShadow: "0 18px 30px -14px rgba(20,17,23,.5)",
+            pointerEvents: "none",
+            transform: "scale(1.08)",
+            filter: "drop-shadow(0 18px 26px rgba(20,17,23,.45))",
           });
-          document.body.appendChild(ghost);
+          document.body.appendChild(piece);
         }
 
-        if (dragging && ghost) {
-          ghost.style.left = `${ev.clientX}px`;
-          ghost.style.top = `${ev.clientY}px`;
+        if (dragging) {
+          piece.style.left = `${ev.clientX - w / 2}px`;
+          piece.style.top = `${ev.clientY - h / 2}px`;
           const target = document
             .elementFromPoint(ev.clientX, ev.clientY)
             ?.closest(".puzzle-slot");
@@ -255,20 +344,33 @@
           return;
         }
 
-        piece.classList.remove("dragging");
         const target = document
           .elementFromPoint(ev.clientX, ev.clientY)
           ?.closest(".puzzle-slot");
         board
           .querySelectorAll(".puzzle-slot")
           .forEach((s) => s.classList.remove("drag-over"));
-        ghost?.remove();
+        unstickPiece(piece);
 
-        if (target) place(piece, target);
+        place(piece, target);
       };
 
       window.addEventListener("pointermove", onMove);
       window.addEventListener("pointerup", onUp, { once: true });
+    }
+
+    function unstickPiece(piece) {
+      Object.assign(piece.style, {
+        position: "",
+        left: "",
+        top: "",
+        width: "",
+        height: "",
+        zIndex: "",
+        pointerEvents: "",
+        transform: "",
+        filter: "",
+      });
     }
 
     function toggleSelect(piece) {
@@ -296,22 +398,18 @@
 
     function place(piece, slot) {
       const correct = Number(piece.dataset.correct);
-      const target = Number(slot.dataset.index);
+      const target = slot ? Number(slot.dataset.index) : NaN;
+      const valid = slot && !slot.classList.contains("filled") && correct === target;
 
-      if (slot.classList.contains("filled")) {
-        shake(piece);
-        return;
-      }
-
-      if (correct !== target) {
-        shake(piece);
+      if (!valid) {
+        if (slot) shake(piece);
+        tray.appendChild(piece);
         return;
       }
 
       if (!started) startTimer();
 
       piece.classList.add("placed");
-      piece.style.cursor = "default";
       slot.classList.add("filled");
       slot.appendChild(piece);
       placed[correct] = true;

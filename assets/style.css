@@ -703,17 +703,15 @@ p {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 4px;
-  background: #f6eeee;
-  border: 1px dashed rgba(20,17,23,0.18);
+  gap: 10px;
+  background: transparent;
   padding: 4px;
 }
 
 .puzzle-slot {
-  border-radius: 8px;
-  border: 1.5px dashed rgba(20, 17, 23, 0.18);
+  border-radius: 6px;
   position: relative;
-  transition: background 0.15s ease, border-color 0.15s ease;
+  transition: background 0.15s ease;
   /* a faint preview of the target image, like the app's "show guide" option */
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.86)),
@@ -727,23 +725,48 @@ p {
 }
 
 .puzzle-slot.drag-over {
-  border-color: var(--accent);
-  background: var(--pill-bg);
+  background-color: var(--pill-bg);
 }
 
-.puzzle-slot.filled {
-  border-style: solid;
-  border-color: transparent;
+/* the dashed jigsaw-shaped socket outline, drawn by JS to match this slot's
+   exact tab/blank pattern rather than a generic dashed rectangle */
+.puzzle-slot-outline {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.puzzle-slot-outline path {
+  fill: none;
+  stroke: rgba(20, 17, 23, 0.3);
+  stroke-width: 1.6;
+  stroke-dasharray: 3 3.5;
+  vector-effect: non-scaling-stroke;
+  transition: stroke 0.15s ease, stroke-width 0.15s ease;
+}
+
+.puzzle-slot.drag-over .puzzle-slot-outline path {
+  stroke: var(--accent);
+  stroke-width: 2.2;
+  stroke-dasharray: none;
+}
+
+.puzzle-slot.filled .puzzle-slot-outline {
+  opacity: 0;
 }
 
 .puzzle-tray {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 8px;
+  gap: 14px;
   background: #f6f1f0;
   border: 1px solid var(--card-border);
-  padding: 10px;
+  border-radius: var(--radius-md);
+  padding: 16px;
   align-content: center;
   justify-items: center;
 }
@@ -751,29 +774,42 @@ p {
 .puzzle-piece {
   width: 100%;
   height: 100%;
-  border-radius: 8px;
   cursor: grab;
-  box-shadow: 0 6px 14px -8px rgba(20,17,23,0.35);
-  background-repeat: no-repeat;
-  outline-offset: 2px;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, outline-color .15s ease;
   touch-action: none;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.puzzle-piece svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  display: block;
+  filter: drop-shadow(0 5px 8px rgba(20, 17, 23, 0.28));
+}
+
+.puzzle-piece .piece-outline {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.85);
+  stroke-width: 1.6;
+  vector-effect: non-scaling-stroke;
 }
 
 .puzzle-piece:active { cursor: grabbing; }
 
-.puzzle-piece:hover { transform: scale(1.04); box-shadow: 0 10px 18px -8px rgba(20,17,23,0.4); }
+.puzzle-piece:hover { transform: scale(1.06); }
 
-.puzzle-piece.selected {
-  outline: 3px solid var(--accent);
+.puzzle-piece.selected svg {
+  filter:
+    drop-shadow(0 0 2px var(--accent))
+    drop-shadow(0 0 6px var(--accent))
+    drop-shadow(0 5px 8px rgba(20, 17, 23, 0.28));
 }
-
-.puzzle-piece.dragging { opacity: 0.35; }
 
 .puzzle-piece.placed {
   cursor: default;
-  box-shadow: none;
 }
+
+.puzzle-piece.placed svg { filter: none; }
 
 .puzzle-piece.placed:hover { transform: none; }
 
