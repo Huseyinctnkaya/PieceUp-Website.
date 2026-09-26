@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — PieceUp</title>
+  <meta name="description" content="Why PieceUp exists, what it's built with, and who makes it — 34devs." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <span class="logo-mark">
+          <svg width="20" height="20" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <mask id="piece-mask" maskUnits="userSpaceOnUse">
+              <rect width="48" height="48" fill="#fff"/>
+              <circle cx="8" cy="24" r="6" fill="#000"/>
+            </mask>
+            <g mask="url(#piece-mask)">
+              <rect x="8" y="8" width="26" height="32" rx="6" fill="currentColor"/>
+              <circle cx="40" cy="20" r="6" fill="currentColor"/>
+            </g>
+          </svg>
+        </span>
+        PieceUp
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html" aria-current="page">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-accent" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Add to Shopify</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+      </div>
+    </div>
+
+    <div class="site-nav-panel">
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html" aria-current="page">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-accent btn-block" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Add to Shopify</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="mesh-bg compact"><span></span></div>
+      <div class="container">
+        <span class="eyebrow" style="justify-content:center;">About</span>
+        <h1>A discount is easy to ignore. A game isn't.</h1>
+        <p class="lede">PieceUp exists because a 10%-off popup and a moment someone actually enjoys don't have to be different things.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="story-grid reveal">
+          <div class="story-copy">
+            <span class="eyebrow">Why it exists</span>
+            <h2>Most popups get closed. Puzzles get finished.</h2>
+            <p>A discount banner asks for nothing and gets ignored for it. PieceUp asks a shopper to spend twenty seconds dragging pieces into place — and in exchange for that small bit of attention, it hands over something real: a genuine, working Shopify discount code, picked from prizes the merchant actually chose.</p>
+            <p>Nothing about it is a trick. There's no email gate, no "spin to see if you maybe won," no countdown that resets when you refresh. You solve the picture, you see your reward, the code is yours — the same way it would be if you'd typed it in from an email.</p>
+            <p>For the merchant, that trade shows up as something they can actually measure: not just how many popups opened, but how much of it turned into orders.</p>
+          </div>
+          <div class="maker-card">
+            <span class="logo-mark">
+              <svg width="22" height="22" viewBox="0 0 48 48" fill="none"><g mask="url(#piece-mask)"><rect x="8" y="8" width="26" height="32" rx="6" fill="currentColor"/><circle cx="40" cy="20" r="6" fill="currentColor"/></g></svg>
+            </span>
+            <h3>Built with</h3>
+            <p style="margin-top:.6rem; font-size:.95rem;">React Router 7, Shopify App Bridge and Polaris for the admin; Prisma for storage; a Preact-powered theme app extension for the storefront widget itself — no third-party tracking bolted on for the ride.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">What we optimize for</span>
+          <h2>Three things we won't trade away</h2>
+        </div>
+        <div class="value-grid reveal">
+          <div class="value-card">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Play that's actually optional</h3>
+            <p>A shopper chooses to play. Nothing blocks the store behind it, and closing it costs them nothing.</p>
+          </div>
+          <div class="value-card">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M7 8V6a5 5 0 0110 0v2" stroke="currentColor" stroke-width="1.6"/></svg>
+            </div>
+            <h3>Real rewards, no personal data</h3>
+            <p>Every prize is a genuine Shopify discount. Revenue tracking knows an order happened and what it was worth — never who placed it.</p>
+          </div>
+          <div class="value-card">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 19h16M4 15l4-6 4 4 4-8 4 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Numbers merchants can trust</h3>
+            <p>Cancelled orders get deducted. If a shopper finishes but the plan's reward limit is hit, that's shown too — not hidden in the average.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="cta-banner reveal">
+          <div class="mesh-bg compact"><span></span></div>
+          <h2>Questions before you install?</h2>
+          <p>We read every message ourselves — no support ticket queue.</p>
+          <div class="cta-actions">
+            <a class="btn btn-accent" href="contact.html">Get in touch</a>
+            <a class="btn btn-ghost" style="color:#fff; border-color:rgba(255,255,255,.35);" href="https://34devs.com/privacy" target="_blank" rel="noopener">Privacy policy</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <span class="logo-mark">
+              <svg width="20" height="20" viewBox="0 0 48 48" fill="none"><g mask="url(#piece-mask)"><rect x="8" y="8" width="26" height="32" rx="6" fill="currentColor"/><circle cx="40" cy="20" r="6" fill="currentColor"/></g></svg>
+            </span>
+            PieceUp
+          </a>
+          <p>Turns a discount into a puzzle your shoppers actually want to play. A Shopify app by 34devs.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">App Store listing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://34devs.com/privacy" target="_blank" rel="noopener">Privacy policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="mailto:info@34devs.com">info@34devs.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> 34devs. PieceUp is an independent app for Shopify merchants.</span>
+        <span>Made with 🧩 for storefronts everywhere</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>

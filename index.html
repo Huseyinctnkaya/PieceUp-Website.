@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PieceUp — Turn browsing into playing</title>
+  <meta name="description" content="PieceUp adds a jigsaw-puzzle popup to your Shopify storefront. Shoppers solve it, pick a prize, and get a real, one-time discount code the instant they finish." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <span class="logo-mark">
+          <svg width="20" height="20" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <mask id="piece-mask" maskUnits="userSpaceOnUse">
+              <rect width="48" height="48" fill="#fff"/>
+              <circle cx="8" cy="24" r="6" fill="#000"/>
+            </mask>
+            <g mask="url(#piece-mask)">
+              <rect x="8" y="8" width="26" height="32" rx="6" fill="currentColor"/>
+              <circle cx="40" cy="20" r="6" fill="currentColor"/>
+            </g>
+          </svg>
+        </span>
+        PieceUp
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-accent" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Add to Shopify</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+      </div>
+    </div>
+
+    <div class="site-nav-panel">
+      <nav class="main-nav">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-accent btn-block" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Add to Shopify</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="mesh-bg"><span></span></div>
+      <div class="container hero-inner">
+        <span class="pill">🧩 Promotions &amp; games app for Shopify</span>
+        <h1>Turn browsing into playing.</h1>
+        <p class="lede">
+          PieceUp drops a jigsaw puzzle into your storefront. Shoppers solve
+          it, pick a prize, and walk away with a real, one-time Shopify
+          discount code — the moment they finish, no email gate, no
+          spreadsheet of codes to hand out.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-accent" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Add to Shopify — it's free</a>
+          <a class="btn btn-ghost" href="#demo">Try the demo ↓</a>
+        </div>
+        <div class="hero-meta">
+          <span class="pill">Free plan available</span>
+          <span class="pill">7-day trial on paid plans</span>
+          <span class="pill">No coding required</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LIVE DEMO ============ -->
+    <section class="section puzzle-demo-section" id="demo">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Try it yourself</span>
+          <h2>This is exactly what your shoppers see</h2>
+          <p class="lede" style="margin-inline:auto;">
+            Drag a piece from the tray onto its matching spot on the board.
+            Finish the picture and watch the reward appear — the same
+            instant a real shopper gets a real code in your store.
+          </p>
+        </div>
+
+        <div class="puzzle-demo reveal">
+          <div class="puzzle-shell">
+            <div class="puzzle-shell-head">
+              <div>
+                <h3>Complete the picture, unlock 10% off</h3>
+                <p>Drag pieces with your mouse, or tap a piece then tap its spot.</p>
+              </div>
+              <span class="puzzle-timer">00:00</span>
+            </div>
+
+            <div class="puzzle-stage">
+              <div class="puzzle-board" aria-label="Puzzle board"></div>
+              <div class="puzzle-tray" aria-label="Puzzle pieces"></div>
+            </div>
+
+            <div class="puzzle-progress">
+              <span class="puzzle-progress-label">0 / 9</span>
+              <div class="puzzle-progress-bar"><div class="puzzle-progress-fill"></div></div>
+            </div>
+
+            <div class="puzzle-footer">
+              <span class="puzzle-hint">This is the actual mechanic your shoppers play — built with the same rules as the real widget.</span>
+              <button class="btn btn-ghost" type="button" data-puzzle-reset>Reset puzzle</button>
+            </div>
+
+            <div class="reward-overlay">
+              <div class="reward-card">
+                <div class="reward-icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9 17.5L20 6.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h3>Solved! You unlocked a reward.</h3>
+                <p>In a live store, PieceUp mints this as a real, single-use Shopify code the instant a shopper finishes.</p>
+                <div class="reward-code">🎟️ <span>PIECEUP-10</span></div>
+                <p class="reward-note">Demo code for illustration — it won't work at checkout.</p>
+                <div class="reward-actions">
+                  <button class="btn btn-dark" type="button" data-reward-replay>Play again</button>
+                  <a class="btn btn-accent" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Add to Shopify</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">How it works</span>
+          <h2>Three steps, no developer needed</h2>
+        </div>
+        <div class="steps reveal">
+          <div class="step">
+            <div class="step-num">1</div>
+            <h3>Build a puzzle</h3>
+            <p>Upload any image, pick 2×2 up to 4×4 pieces, a difficulty, and — optionally — a time limit.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <h3>Set the prize</h3>
+            <p>Percentage off, amount off, or a free "try again." Limit it to certain products or collections if you like.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <h3>Turn it on</h3>
+            <p>Enable the theme app embed, choose how it triggers, and PieceUp mints a real discount code on every win.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURE HIGHLIGHTS ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">What's inside</span>
+          <h2>Everything you need to run it, nothing you have to babysit</h2>
+        </div>
+
+        <div class="feature-grid reveal">
+          <a class="feature-card" href="features.html#build">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 5h16v10H4z" stroke="currentColor" stroke-width="1.8"/><path d="M4 15l4-5 3 3 4-5 5 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Build from any image</h3>
+            <p>2×2 up to 4×4 pieces, three difficulty levels, an optional time limit.</p>
+          </a>
+
+          <a class="feature-card" href="features.html#rewards">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 12v8H4v-8" stroke="currentColor" stroke-width="1.8"/><path d="M2 8h20v4H2z" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v12M12 8c-1.5-4-6-4-6-1s3 1 6 1zM12 8c1.5-4 6-4 6-1s-3 1-6 1z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Rewards you control</h3>
+            <p>Percentage off, amount off, or a no-cost "try again" — limited to products or collections if needed.</p>
+          </a>
+
+          <a class="feature-card" href="features.html#triggers">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Trigger it your way</h3>
+            <p>A button, an auto-popup after a delay, or both — on every page, product pages, or the cart.</p>
+          </a>
+
+          <a class="feature-card" href="features.html#analytics">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 20V10M12 20V4M20 20v-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Revenue, not just plays</h3>
+            <p>Opens, completions and rewards, with orders matched back to the puzzle that earned them.</p>
+          </a>
+
+          <a class="feature-card" href="features.html#testing">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 4v16M16 4v16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M4 9h4M16 9h4M4 15h4M16 15h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <h3>A/B test two puzzles</h3>
+            <p>Split traffic between two variants and keep whichever one actually earns more. <em>(Premium)</em></p>
+          </a>
+
+          <a class="feature-card" href="features.html#frequency">
+            <div class="feature-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" stroke-width="1.8"/><path d="M8 12h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Play limits that stick</h3>
+            <p>Once ever, once a day, or unlimited — enforced per shopper, not just per session.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRICING TEASER ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Pricing</span>
+          <h2>Start free. Upgrade when the puzzle earns its keep.</h2>
+        </div>
+
+        <div class="pricing-grid reveal">
+          <div class="pricing-card">
+            <span class="plan-name">Free</span>
+            <div class="plan-price"><strong>$0</strong><span>/month</span></div>
+            <p style="font-size:.9rem;">100 rewards/mo · 1 puzzle</p>
+            <ul class="plan-features" style="margin-top:1.25rem;">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l4.5 4.5L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Every reward type</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l4.5 4.5L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>PieceUp badge on popup</li>
+            </ul>
+          </div>
+
+          <div class="pricing-card pricing-card--featured">
+            <span class="pill badge-recommended">Most popular</span>
+            <span class="plan-name">Pro</span>
+            <div class="plan-price"><strong>$9.99</strong><span>/month</span></div>
+            <p style="font-size:.9rem;">1,000 rewards/mo · unlimited puzzles</p>
+            <ul class="plan-features" style="margin-top:1.25rem;">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l4.5 4.5L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>No PieceUp badge</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l4.5 4.5L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Analytics &amp; per-puzzle revenue</li>
+            </ul>
+          </div>
+
+          <div class="pricing-card">
+            <span class="plan-name">Premium</span>
+            <div class="plan-price"><strong>$19.99</strong><span>/month</span></div>
+            <p style="font-size:.9rem;">Unlimited rewards &amp; puzzles</p>
+            <ul class="plan-features" style="margin-top:1.25rem;">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l4.5 4.5L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>A/B testing</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l4.5 4.5L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority support</li>
+            </ul>
+          </div>
+        </div>
+
+        <p style="text-align:center; margin-top:2rem;">
+          <a class="btn btn-ghost" href="pricing.html">See full plan comparison →</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ CTA BANNER ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-banner reveal">
+          <div class="mesh-bg compact"><span></span></div>
+          <h2>Give your discount code a reason to be earned.</h2>
+          <p>Install PieceUp free, build your first puzzle in minutes, and see what a game does to your conversion rate.</p>
+          <div class="cta-actions">
+            <a class="btn btn-accent" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Add to Shopify — it's free</a>
+            <a class="btn btn-ghost" style="color:#fff; border-color:rgba(255,255,255,.35);" href="contact.html">Talk to us first</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <span class="logo-mark">
+              <svg width="20" height="20" viewBox="0 0 48 48" fill="none"><g mask="url(#piece-mask)"><rect x="8" y="8" width="26" height="32" rx="6" fill="currentColor"/><circle cx="40" cy="20" r="6" fill="currentColor"/></g></svg>
+            </span>
+            PieceUp
+          </a>
+          <p>Turns a discount into a puzzle your shoppers actually want to play. A Shopify app by 34devs.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">App Store listing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="mailto:info@34devs.com">info@34devs.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> 34devs. PieceUp is an independent app for Shopify merchants.</span>
+        <span>Made with 🧩 for storefronts everywhere</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>

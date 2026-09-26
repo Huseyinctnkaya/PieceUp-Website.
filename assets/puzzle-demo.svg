@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff1461"/>
+      <stop offset="55%" stop-color="#ff7a45"/>
+      <stop offset="100%" stop-color="#ffc25c"/>
+    </linearGradient>
+    <linearGradient id="lid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#fff3ea"/>
+    </linearGradient>
+    <linearGradient id="box" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fffdfc"/>
+      <stop offset="100%" stop-color="#ffe9df"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="600" fill="url(#bg)"/>
+
+  <!-- soft ambient blobs so every tile has some texture, not just flat gradient -->
+  <circle cx="90" cy="500" r="140" fill="#ffffff" opacity="0.08"/>
+  <circle cx="520" cy="80" r="160" fill="#ffffff" opacity="0.1"/>
+  <circle cx="540" cy="520" r="90" fill="#14111a" opacity="0.06"/>
+  <circle cx="70" cy="90" r="70" fill="#14111a" opacity="0.06"/>
+
+  <!-- scattered confetti so corner tiles read as distinct -->
+  <g opacity="0.95">
+    <rect x="60" y="150" width="16" height="16" rx="3" fill="#ffffff" transform="rotate(18 68 158)"/>
+    <rect x="120" y="90" width="14" height="14" rx="3" fill="#141117" opacity="0.5" transform="rotate(-12 127 97)"/>
+    <circle cx="150" cy="200" r="8" fill="#ffffff"/>
+    <rect x="470" y="140" width="16" height="16" rx="3" fill="#141117" opacity="0.45" transform="rotate(24 478 148)"/>
+    <circle cx="520" cy="190" r="9" fill="#ffffff"/>
+    <rect x="440" y="90" width="12" height="12" rx="3" fill="#ffffff" transform="rotate(-20 446 96)"/>
+    <circle cx="95" cy="470" r="9" fill="#141117" opacity="0.35"/>
+    <rect x="150" y="480" width="14" height="14" rx="3" fill="#ffffff" transform="rotate(10 157 487)"/>
+    <circle cx="500" cy="470" r="8" fill="#ffffff"/>
+    <rect x="450" y="510" width="16" height="16" rx="3" fill="#141117" opacity="0.4" transform="rotate(-16 458 518)"/>
+  </g>
+
+  <!-- gift box, centered -->
+  <g transform="translate(300 320)">
+    <rect x="-130" y="-40" width="260" height="180" rx="14" fill="url(#box)"/>
+    <rect x="-140" y="-80" width="280" height="60" rx="14" fill="url(#lid)"/>
+    <rect x="-18" y="-80" width="36" height="220" fill="#ff1461"/>
+    <rect x="-140" y="-58" width="280" height="16" fill="#ff1461"/>
+
+    <!-- ribbon bow -->
+    <path d="M0 -80 C -70 -140 -120 -60 -30 -50 C -120 -40 -70 40 0 -20 Z" fill="#ff1461"/>
+    <path d="M0 -80 C 70 -140 120 -60 30 -50 C 120 -40 70 40 0 -20 Z" fill="#c81155"/>
+    <circle cx="0" cy="-72" r="14" fill="#141117"/>
+  </g>
+
+  <!-- a single oversized puzzle-piece cut-out watermark, top-right, on brand -->
+  <g opacity="0.16" transform="translate(430 120) scale(2.2)">
+    <path d="M10 0 H34 a8 8 0 0 1 8 8 c0 5 5 6 9 6 a9 9 0 0 1 0 18 c-4 0-9 1-9 6 a8 8 0 0 1-8 8 H10 a8 8 0 0 1-8-8 V10 A10 10 0 0 1 10 0 Z" fill="#141117"/>
+  </g>
+</svg>
