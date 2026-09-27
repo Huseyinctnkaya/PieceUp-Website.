@@ -297,6 +297,8 @@ p {
 }
 .app-store-badge img { height: 44px; width: auto; display: block; }
 
+.nav-cta .app-store-badge img { height: 34px; }
+
 .pill {
   display: inline-flex;
   align-items: center;
@@ -798,6 +800,16 @@ p {
   font-size: 0.85rem;
   color: var(--muted);
 }
+
+.footer-bottom .made-by {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--muted);
+  transition: color 0.15s ease;
+}
+.footer-bottom .made-by:hover { color: var(--ink); }
+.footer-bottom .made-by img { height: 16px; width: auto; display: block; }
 
 /* ==========================================================================
    Puzzle demo
