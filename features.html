@@ -9,9 +9,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/style.css?v=4" />
+  <link rel="stylesheet" href="assets/style.css?v=5" />
 </head>
 <body>
+
+  <div class="scroll-progress"></div>
 
   <header class="site-header">
     <div class="container">
@@ -63,6 +65,15 @@
 
     <section class="page-hero">
       <div class="mesh-bg compact"><span></span></div>
+      <div class="hero-wordmark" aria-hidden="true">Features</div>
+      <svg class="floating-piece" style="top:10%; left:8%; width:46px; height:46px; --rot:-12deg; color:var(--accent);" viewBox="0 0 48 48" fill="none" data-parallax="0.06" aria-hidden="true">
+        <mask id="fph-1"><rect width="48" height="48" fill="#fff"/><circle cx="8" cy="24" r="6" fill="#000"/></mask>
+        <g mask="url(#fph-1)"><rect x="8" y="8" width="26" height="32" rx="6" fill="currentColor"/><circle cx="40" cy="20" r="6" fill="currentColor"/></g>
+      </svg>
+      <svg class="floating-piece" style="top:55%; right:9%; width:36px; height:36px; --rot:14deg; color:#ff7a45;" viewBox="0 0 48 48" fill="none" data-parallax="0.09" aria-hidden="true">
+        <mask id="fph-2"><rect width="48" height="48" fill="#fff"/><circle cx="8" cy="24" r="6" fill="#000"/></mask>
+        <g mask="url(#fph-2)"><rect x="8" y="8" width="26" height="32" rx="6" fill="currentColor"/><circle cx="40" cy="20" r="6" fill="currentColor"/></g>
+      </svg>
       <div class="container">
         <span class="eyebrow" style="justify-content:center;">Features</span>
         <h1>Every detail is yours to set.</h1>
@@ -86,7 +97,7 @@
             </ul>
           </div>
           <div class="feature-row-media">
-            <div class="browser-frame">
+            <div class="browser-frame tilt-card">
               <div class="chrome-bar"><span></span><span></span><span></span></div>
               <img src="assets/screenshots/puzzle-editor.webp" alt="PieceUp puzzle editor screen showing headline, description, pieces, accent color and prize configuration" loading="lazy" />
             </div>
@@ -106,7 +117,7 @@
             </ul>
           </div>
           <div class="feature-row-media">
-            <div class="browser-frame">
+            <div class="browser-frame tilt-card">
               <div class="chrome-bar"><span></span><span></span><span></span></div>
               <img src="assets/screenshots/storefront-preview.webp" alt="Storefront preview of a shopper solving the puzzle and unlocking a reward" loading="lazy" />
             </div>
@@ -126,7 +137,7 @@
             </ul>
           </div>
           <div class="feature-row-media">
-            <div class="browser-frame">
+            <div class="browser-frame tilt-card">
               <div class="chrome-bar"><span></span><span></span><span></span></div>
               <img src="assets/screenshots/admin-home.webp" alt="PieceUp admin home screen with a setup guide and store widget controls" loading="lazy" />
             </div>
@@ -146,7 +157,7 @@
             </ul>
           </div>
           <div class="feature-row-media">
-            <div class="browser-frame">
+            <div class="browser-frame tilt-card">
               <div class="chrome-bar"><span></span><span></span><span></span></div>
               <img src="assets/screenshots/analytics-dashboard.webp" alt="PieceUp analytics dashboard showing revenue earned, orders with a reward, and a daily opens/rewards chart" loading="lazy" />
             </div>
@@ -166,7 +177,7 @@
             </ul>
           </div>
           <div class="feature-row-media">
-            <div class="browser-frame">
+            <div class="browser-frame tilt-card">
               <div class="chrome-bar"><span></span><span></span><span></span></div>
               <img src="assets/screenshots/ab-testing.webp" alt="PieceUp A/B testing screen comparing two puzzle variants by revenue and completion rate" loading="lazy" />
             </div>
@@ -183,7 +194,7 @@
           <h2>See it running in your own store.</h2>
           <p>Free to install, live in minutes, no code required.</p>
           <div class="cta-actions">
-            <a class="btn btn-accent" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Add to Shopify — it's free</a>
+            <a class="btn btn-accent btn-magnetic" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Add to Shopify — it's free</a>
             <a class="btn btn-ghost" style="color:#fff; border-color:rgba(255,255,255,.35);" href="index.html#demo">Try the puzzle demo</a>
           </div>
         </div>
@@ -233,6 +244,6 @@
     </div>
   </footer>
 
-  <script src="assets/script.js?v=4"></script>
+  <script src="assets/script.js?v=5"></script>
 </body>
 </html>

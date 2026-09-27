@@ -25,6 +25,7 @@
       if (hasFinePointer) {
         initMagnetic();
         initTilt();
+        initCardTilt();
       }
     }
   });
@@ -185,6 +186,31 @@
 
     shell.addEventListener("mouseleave", () => {
       shell.style.transform = "";
+    });
+  }
+
+  /* ------------------------------------------------------------------ *
+   * Generic hover tilt for plain content cards — screenshots, maker card.
+   * Same idea as the puzzle tilt but lighter, and with no drag zone to
+   * avoid, so any number of `.tilt-card` elements can share it.
+   * ------------------------------------------------------------------ */
+
+  function initCardTilt() {
+    const cards = document.querySelectorAll(".tilt-card");
+    if (!cards.length) return;
+    const maxTilt = 4;
+
+    cards.forEach((card) => {
+      card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const px = (e.clientX - rect.left) / rect.width - 0.5;
+        const py = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = `perspective(900px) rotateX(${-py * maxTilt}deg) rotateY(${px * maxTilt}deg)`;
+      });
+
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "";
+      });
     });
   }
 

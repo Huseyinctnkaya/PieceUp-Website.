@@ -9,9 +9,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/style.css?v=4" />
+  <link rel="stylesheet" href="assets/style.css?v=5" />
 </head>
 <body>
+
+  <div class="scroll-progress"></div>
 
   <header class="site-header">
     <div class="container">
@@ -54,7 +56,7 @@
         <a href="contact.html">Contact</a>
       </nav>
       <div class="nav-cta">
-        <a class="btn btn-accent btn-block" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Add to Shopify</a>
+        <a class="btn btn-accent btn-block btn-magnetic" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Add to Shopify</a>
       </div>
     </div>
   </header>
@@ -63,6 +65,15 @@
 
     <section class="page-hero">
       <div class="mesh-bg compact"><span></span></div>
+      <div class="hero-wordmark" aria-hidden="true">Pricing</div>
+      <svg class="floating-piece" style="top:12%; left:9%; width:44px; height:44px; --rot:10deg; color:var(--accent);" viewBox="0 0 48 48" fill="none" data-parallax="0.06" aria-hidden="true">
+        <mask id="fph-1"><rect width="48" height="48" fill="#fff"/><circle cx="8" cy="24" r="6" fill="#000"/></mask>
+        <g mask="url(#fph-1)"><rect x="8" y="8" width="26" height="32" rx="6" fill="currentColor"/><circle cx="40" cy="20" r="6" fill="currentColor"/></g>
+      </svg>
+      <svg class="floating-piece" style="top:58%; right:8%; width:38px; height:38px; --rot:-16deg; color:#ffc25c;" viewBox="0 0 48 48" fill="none" data-parallax="0.09" aria-hidden="true">
+        <mask id="fph-2"><rect width="48" height="48" fill="#fff"/><circle cx="8" cy="24" r="6" fill="#000"/></mask>
+        <g mask="url(#fph-2)"><rect x="8" y="8" width="26" height="32" rx="6" fill="currentColor"/><circle cx="40" cy="20" r="6" fill="currentColor"/></g>
+      </svg>
       <div class="container">
         <span class="eyebrow" style="justify-content:center;">Pricing</span>
         <h1>Start free. Pay when it's earning.</h1>
@@ -72,7 +83,7 @@
 
     <section class="section" style="padding-top:0;">
       <div class="container">
-        <div class="pricing-grid reveal">
+        <div class="pricing-grid reveal-stagger">
 
           <div class="pricing-card">
             <span class="plan-name">Free</span>
@@ -84,7 +95,7 @@
               <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l4.5 4.5L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Every reward type</li>
               <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l4.5 4.5L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>PieceUp badge on the popup</li>
             </ul>
-            <a class="btn btn-ghost btn-block" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Start free</a>
+            <a class="btn btn-ghost btn-block btn-magnetic" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Start free</a>
           </div>
 
           <div class="pricing-card pricing-card--featured">
@@ -98,7 +109,7 @@
               <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l4.5 4.5L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>No PieceUp badge</li>
               <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l4.5 4.5L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Analytics, with the revenue each puzzle earned</li>
             </ul>
-            <a class="btn btn-accent btn-block" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Start 7-day trial</a>
+            <a class="btn btn-accent btn-block btn-magnetic" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Start 7-day trial</a>
           </div>
 
           <div class="pricing-card">
@@ -112,7 +123,7 @@
               <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l4.5 4.5L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>A/B testing — run two puzzles, keep the winner</li>
               <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l4.5 4.5L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority support</li>
             </ul>
-            <a class="btn btn-ghost btn-block" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Start 7-day trial</a>
+            <a class="btn btn-ghost btn-block btn-magnetic" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Start 7-day trial</a>
           </div>
 
         </div>
@@ -127,7 +138,7 @@
           <h2>Pricing FAQ</h2>
         </div>
 
-        <div class="reveal" style="display:grid; gap:1.1rem;">
+        <div class="reveal-stagger" style="display:grid; gap:1.1rem;">
           <div class="feature-card">
             <h3>What counts as a "reward"?</h3>
             <p>Any prize handed out when a shopper finishes a puzzle — a discount code or a free "try again." Your monthly limit resets on your billing date.</p>
@@ -155,7 +166,7 @@
           <h2>Still deciding?</h2>
           <p>The free plan has no time limit — build a puzzle and see how it feels in your store first.</p>
           <div class="cta-actions">
-            <a class="btn btn-accent" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Add to Shopify — it's free</a>
+            <a class="btn btn-accent btn-magnetic" href="https://apps.shopify.com/pieceup" target="_blank" rel="noopener">Add to Shopify — it's free</a>
           </div>
         </div>
       </div>
@@ -204,6 +215,6 @@
     </div>
   </footer>
 
-  <script src="assets/script.js?v=4"></script>
+  <script src="assets/script.js?v=5"></script>
 </body>
 </html>

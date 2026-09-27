@@ -9,9 +9,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/style.css?v=4" />
+  <link rel="stylesheet" href="assets/style.css?v=5" />
 </head>
 <body>
+
+  <div class="scroll-progress"></div>
 
   <header class="site-header">
     <div class="container">
@@ -63,6 +65,15 @@
 
     <section class="page-hero">
       <div class="mesh-bg compact"><span></span></div>
+      <div class="hero-wordmark" aria-hidden="true">About</div>
+      <svg class="floating-piece" style="top:14%; left:10%; width:42px; height:42px; --rot:-8deg; color:var(--accent);" viewBox="0 0 48 48" fill="none" data-parallax="0.06" aria-hidden="true">
+        <mask id="fph-1"><rect width="48" height="48" fill="#fff"/><circle cx="8" cy="24" r="6" fill="#000"/></mask>
+        <g mask="url(#fph-1)"><rect x="8" y="8" width="26" height="32" rx="6" fill="currentColor"/><circle cx="40" cy="20" r="6" fill="currentColor"/></g>
+      </svg>
+      <svg class="floating-piece" style="top:54%; right:10%; width:36px; height:36px; --rot:18deg; color:#ff7a45;" viewBox="0 0 48 48" fill="none" data-parallax="0.09" aria-hidden="true">
+        <mask id="fph-2"><rect width="48" height="48" fill="#fff"/><circle cx="8" cy="24" r="6" fill="#000"/></mask>
+        <g mask="url(#fph-2)"><rect x="8" y="8" width="26" height="32" rx="6" fill="currentColor"/><circle cx="40" cy="20" r="6" fill="currentColor"/></g>
+      </svg>
       <div class="container">
         <span class="eyebrow" style="justify-content:center;">About</span>
         <h1>A discount is easy to ignore. A game isn't.</h1>
@@ -72,7 +83,7 @@
 
     <section class="section" style="padding-top:0;">
       <div class="container">
-        <div class="story-grid reveal">
+        <div class="story-grid reveal-stagger">
           <div class="story-copy">
             <span class="eyebrow">Why it exists</span>
             <h2>Most popups get closed. Puzzles get finished.</h2>
@@ -80,7 +91,7 @@
             <p>Nothing about it is a trick. There's no email gate, no "spin to see if you maybe won," no countdown that resets when you refresh. You solve the picture, you see your reward, the code is yours — the same way it would be if you'd typed it in from an email.</p>
             <p>For the merchant, that trade shows up as something they can actually measure: not just how many popups opened, but how much of it turned into orders.</p>
           </div>
-          <div class="maker-card">
+          <div class="maker-card tilt-card">
             <span class="logo-mark">
               <svg width="22" height="22" viewBox="0 0 48 48" fill="none"><g mask="url(#piece-mask)"><rect x="8" y="8" width="26" height="32" rx="6" fill="currentColor"/><circle cx="40" cy="20" r="6" fill="currentColor"/></g></svg>
             </span>
@@ -97,7 +108,7 @@
           <span class="eyebrow">What we optimize for</span>
           <h2>Three things we won't trade away</h2>
         </div>
-        <div class="value-grid reveal">
+        <div class="value-grid reveal-stagger">
           <div class="value-card">
             <div class="feature-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
@@ -130,7 +141,7 @@
           <h2>Questions before you install?</h2>
           <p>We read every message ourselves — no support ticket queue.</p>
           <div class="cta-actions">
-            <a class="btn btn-accent" href="contact.html">Get in touch</a>
+            <a class="btn btn-accent btn-magnetic" href="contact.html">Get in touch</a>
             <a class="btn btn-ghost" style="color:#fff; border-color:rgba(255,255,255,.35);" href="https://34devs.com/privacy" target="_blank" rel="noopener">Privacy policy</a>
           </div>
         </div>
@@ -181,6 +192,6 @@
     </div>
   </footer>
 
-  <script src="assets/script.js?v=4"></script>
+  <script src="assets/script.js?v=5"></script>
 </body>
 </html>
