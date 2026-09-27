@@ -288,6 +288,15 @@ p {
 
 .btn-block { width: 100%; }
 
+/* Official Shopify App Store badge — used as-is per Shopify's brand
+   guidelines (no recolor, crop, shadow or animation), just sized and
+   linked. https://shopify.dev/docs/apps/launch/marketing/shopify-brand-assets */
+.app-store-badge {
+  display: inline-flex;
+  line-height: 0;
+}
+.app-store-badge img { height: 44px; width: auto; display: block; }
+
 .pill {
   display: inline-flex;
   align-items: center;
