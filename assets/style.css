@@ -342,14 +342,10 @@ p {
   width: 38px;
   height: 38px;
   border-radius: 11px;
-  background: linear-gradient(135deg, var(--accent) 0%, #ff7a45 60%, #ffc25c 100%);
-  display: grid;
-  place-items: center;
+  display: block;
   box-shadow: 0 8px 18px -8px rgba(255, 20, 97, 0.55);
   flex-shrink: 0;
 }
-
-.logo-mark svg { color: #fff; }
 
 .main-nav {
   display: flex;
